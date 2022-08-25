@@ -4,12 +4,9 @@ WORKDIR /usr/src/app
 
 RUN mkdir -p /usr/src/app
 
-COPY package*.json ./
-COPY index.js ./
+COPY . /usr/src/app/
 
 RUN npm install
-
-COPY . .
 
 EXPOSE 8888
 
