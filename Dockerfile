@@ -1,9 +1,9 @@
 FROM ubuntu:18.04
 FROM node:16
 
-WORKDIR /home/app
-
 RUN mkdir -p /home/app 
+
+WORKDIR /home/app
 
 COPY . /home/app
 
