@@ -26,7 +26,7 @@ jobs:
         cache: 'npm'
     - run: npm install -g mocha
     - run: npm install
-    - run: npm test
+    #- run: npm test
 
   SECRET:
     runs-on: ubuntu-latest
