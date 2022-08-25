@@ -1,4 +1,4 @@
-name: pipeline
+name: pipeline CI
 
 on:
   push:
@@ -13,7 +13,7 @@ env:
 jobs:
 
   init:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
       matrix:
         node-version: [16.x]
@@ -24,12 +24,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install -g mocha
     - run: npm install
+    - run: npm ci
     - run: npm test
 
   SECRET:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: init
     name: Secret-Scanner
     steps:
@@ -41,7 +41,7 @@ jobs:
         continue-on-error: true 
 
   trivy-security:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: init
     continue-on-error: true
     steps:
@@ -66,7 +66,7 @@ jobs:
           sarif_file: 'trivy-results.sarif'
 
   build-docker:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: trivy-security
     steps:
     - uses: actions/checkout@v3
@@ -86,7 +86,7 @@ jobs:
         tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
   deploy_heroku:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: build-docker
     steps:
       - uses: actions/checkout@v3
@@ -98,7 +98,7 @@ jobs:
           usedocker: true  
 
   dast_scan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: deploy_heroku
     steps:
       - name: Checkout
