@@ -26,7 +26,7 @@ jobs:
         cache: 'npm'
     - run: npm install -g mocha
     - run: npm install
-    #- run: npm test
+    - run: npm test
 
   SECRET:
     runs-on: ubuntu-latest
@@ -104,7 +104,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: developer
+          ref: main
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.7.0
         with:
