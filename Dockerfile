@@ -1,13 +1,14 @@
+FROM ubuntu:18.04
 FROM node:16
 
-WORKDIR /usr/src/app
+WORKDIR /home/app
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /home/app 
 
-COPY . /usr/src/app/
+COPY . /home/app
 
 RUN npm install
 
 EXPOSE 8888
 
-CMD [ "node", "index.js" ]
+CMD ["node", "index.js"]
