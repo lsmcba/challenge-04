@@ -1,11 +1,10 @@
-FROM ubuntu:18.04
 FROM node:16
 
-WORKDIR /home/app
+WORKDIR /usr/src/app
 
-RUN mkdir -p /home/app 
+RUN mkdir -p /usr/src/app
 
-COPY . /home/app
+COPY . /usr/src/app/
 
 RUN npm install
 
