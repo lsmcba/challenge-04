@@ -1,14 +1,15 @@
-FROM ubuntu:18.04
 FROM node:16
 
-RUN mkdir -p /home/app 
+WORKDIR /usr/src/app
 
-WORKDIR /home/app
+RUN mkdir -p /usr/src/app
 
-COPY . /home/app
+COPY package*.json ./
 
 RUN npm install
 
+COPY . .
+
 EXPOSE 8888
 
-CMD ["node", "index.js"]
+CMD [ "node", "index.js" ]
