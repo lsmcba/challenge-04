@@ -6,7 +6,6 @@
   "author": "lsmcba",
   "scripts": {
     "start": "node index.js",
-    "test": "index.js"
   },
   "dependencies": {
     "express": "*"
