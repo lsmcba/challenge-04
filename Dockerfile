@@ -1,13 +1,14 @@
-FROM ubuntu-18.04
+FROM ubuntu:18.04
+FROM node:16
 
-FROM node:16-alpine
+WORKDIR /home/app
 
-WORKDIR /usr/src/app
+RUN mkdir -p /home/app 
 
-COPY ./ /usr/src/app/
+COPY . /home/app
 
-RUN npm install 
+RUN npm install
 
 EXPOSE 8888
 
-CMD ["sh", "-c", "date ; npm start "]
+CMD ["node", "index.js"]
