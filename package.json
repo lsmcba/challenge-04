@@ -3,9 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "description": "NodeJS example",
-  "author": "lsmcba",
+  "author": "RoxsRoss",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "*"
